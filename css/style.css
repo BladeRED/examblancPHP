@@ -1,0 +1,8 @@
+.dark{
+    background-color: black;
+    color: white;
+}
+
+h5.card-title.dark{
+    color: grey;
+}
