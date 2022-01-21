@@ -7,7 +7,8 @@ h5.card-title.dark {
     color: grey;
 }
 
-a {
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
     text-decoration: none !important;
-
 }

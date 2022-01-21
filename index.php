@@ -2,7 +2,7 @@
 require 'functions/bddConnexion.php';
 require 'functions/article-functions.php';
 require "functions/user-functions.php";
-
+session_start();
 $bdd = bddConnexion();
 $response = $bdd->query('SELECT * FROM `news-site`.articles');
 $results = $response->fetchAll();
@@ -13,12 +13,18 @@ $results = $response->fetchAll();
 <head>
     <?php
     include 'scripts/stylesheet.php';
+    session_start();
     ?>
 </head>
 
 <body>
 <div class="container">
     <h1> Nouille Info, la carbonara des sites d'infos ! </h1>
+
+    <?php
+
+
+    ?>
 
     <table class="table">
         <thead>
@@ -34,6 +40,21 @@ $results = $response->fetchAll();
         <tbody>
         <?php
         foreach ($results as $result) {
+
+            switch ($result["type"]) {
+                case ($result["type"] == 'Politique'):
+                    echo('color: red');
+                    break;
+                case ($result["type"] == 'Faits-Divers') :
+                    echo('color: blue');
+                    break;
+                case ($result["type"] == 'Autres'):
+                    echo('color: green');
+                    break;
+
+                default:
+                    echo('color: black');
+            };
 
             echo ' <tr>
                 <th scope="row">' . $result["id"] . '</th>

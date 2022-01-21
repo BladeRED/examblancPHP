@@ -1,7 +1,7 @@
 <?php
 require 'functions/bddConnexion.php';
 require 'functions/user-functions.php';
-
+session_start();
 $bdd = bddConnexion();
 $errors = [];
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 <html>
 <head>
     <?php
-    include 'scripts/stylesheet.php'
+    include 'scripts/stylesheet.php';
     ?>
 </head>
 

@@ -2,10 +2,12 @@
 require 'functions/bddConnexion.php';
 require 'functions/article-functions.php';
 require "functions/user-functions.php";
-
+session_start();
 $bdd = bddConnexion();
 $idArticle = $_GET["id"];
 $article = getArticleById($bdd, $idArticle);
+$idUser = $_GET["id"];
+$user = getUserById($bdd, $idUser);
 
 if (is_null($article)) {
     // Je renverrais une page 404 !
@@ -25,7 +27,8 @@ if (is_null($article)) {
         <img src="<?php echo($article["picture"]); ?>" alt="">
         <div class="card-body">
             <h5 class="card-title"><?php echo($article["title"]) ?></h5>
-            <p class="card-text"><?php echo($article["content"]) ?></p>
+            <p class="card-text"><?php echo($article["content"]) ?></br> Rédigé par : <?php echo($user["first_name"] . $user["name"]);?></p>
+
         </div>
     </div>
 </div>
